@@ -1,0 +1,25 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap -m-4">
+      {% for movie in movies %}
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+        <a href="{% url 'movie_detail' movie.pk %}" class="block relative h-48 rounded overflow-hidden">
+          <img alt="{{ movie.title }}" class="object-cover object-center w-full h-full block hover:opacity-80 transition"
+            src="{{ movie.image.url }}">
+        </a>
+        <div class="mt-4">
+          <h2 class="text-white title-font text-lg font-medium">{{ movie.title }}</h2>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

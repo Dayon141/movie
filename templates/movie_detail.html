@@ -1,0 +1,17 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+<section class="text-gray-400 bg-gray-900 body-font min-h-screen">
+  <div class="container px-5 py-24 mx-auto">
+    
+    <h1 class="text-white text-3xl font-bold mb-4">{{ movie.title }}</h1>
+    <p class="text-gray-500 mb-2">{{ movie.year }}</p>
+    <p class="text-gray-400 mb-8">{{ movie.description }}</p>
+
+    <video class="w-full rounded" controls>
+      <source src="{{ movie.film.url }}" type="video/mp4">
+    </video>
+
+  </div>
+</section>
+{% endblock %}
