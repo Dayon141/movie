@@ -48,7 +48,7 @@ class Movie(models.Model):
     image = models.ImageField(upload_to='kino/')
     actors = models.ManyToManyField(Actor)
     country = models.ManyToManyField(Country)
-    comments = models.ManyToManyField(Comment, blank=True, null=True)
+    comments = models.ManyToManyField(Comment, blank=True)
     language = models.ManyToManyField(Language)
     description = models.TextField()
     trailer = models.URLField()

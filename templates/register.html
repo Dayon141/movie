@@ -1,0 +1,41 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+ <div class="wrapper">
+    <form method="post">
+      {% csrf_token %}
+      <h2>Register</h2>
+      <div class="input-field">
+        <input type="text" name="username" required>
+        <label>Username</label>
+      </div>
+      <div class="input-field">
+        <input type="email" name="email" required>
+        <label>Email</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="first_name" required>
+        <label>First name</label>
+      </div>
+      <div class="input-field">
+        <input type="text" name="last_name" required>
+        <label>Last name</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="password1" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="password2" required>
+        <label>Enter your password again</label>
+      </div>
+      <button type="submit">Register</button>
+      <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </form>
+  </div>
+{% endblock %}
