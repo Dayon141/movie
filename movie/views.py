@@ -4,7 +4,7 @@ from .models import Movie
 from .forms import RegisterForm, LoginForm
 
 def home(request):
-    movies = Movie.objects.all()[:5]
+    movies = Movie.objects.all()
     return render(request, 'home.html', {'movies': movies})
 
 def movie_detail(request, pk):
