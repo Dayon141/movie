@@ -3,6 +3,7 @@ from django.contrib.auth import login as auth_login, logout, authenticate
 from .models import Movie
 from .forms import RegisterForm, LoginForm
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -16,7 +17,12 @@ def home(request):
             Q(country__country__icontains=query) |
             Q(language__language__icontains=query)
         ).distinct()
-    return render(request, 'home.html', {'movies': movies})
+    else:
+        movies = Movie.objects.all().order_by('-id')
+    paginator = Paginator(movies, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'home.html', {'movies': page_obj, 'query': query})
 
 def movie_detail(request, pk):
     movie = get_object_or_404(Movie, pk=pk)

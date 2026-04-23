@@ -45,6 +45,24 @@
     
 {% block content %}
     {% endblock %}
+    
+<div class="text-gray-400 bg-gray-900 body-font">
+  {% if movies.has_previous %}
+    <a href="?page={{ movies.previous_page_number }}{% if query %}&q={{ query }}{% endif %}"
+       class="bg-gray-800 py-1 px-4 hover:bg-gray-700 rounded text-white">
+      ←
+    </a>
+  {% endif %}
+  <span class="py-1 px-4 text-gray-400">
+    {{ movies.number }} / {{ movies.paginator.num_pages }}
+  </span>
+  {% if movies.has_next %}
+    <a href="?page={{ movies.next_page_number }}{% if query %}&q={{ query }}{% endif %}"
+       class="bg-gray-800 py-1 px-4 hover:bg-gray-700 rounded text-white">
+      →
+    </a>
+  {% endif %}
+</div>
 
     <footer class="text-gray-400 bg-gray-900 body-font">
   <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
@@ -56,5 +74,6 @@
     </a>
   </div>
 </footer>
+
 </body>
 </html>
