@@ -1,0 +1,17 @@
+{% extends 'basic.html' %}
+{% block title %} Search answer {% endblock %}
+
+{% block content %}
+    {% for i in movies %}
+        {{i.title}}
+        {{i.year}}
+        {{i.genre}}
+        {{i.actors}}
+        {{i.country}}
+        {{i.comments}}
+        {{i.language}}
+        {{i.description}}
+        {{i.trailer}}
+        {{i.film}}
+    {% endfor %}
+{% endblock %}

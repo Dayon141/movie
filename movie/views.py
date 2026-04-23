@@ -2,9 +2,20 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login as auth_login, logout, authenticate
 from .models import Movie
 from .forms import RegisterForm, LoginForm
+from django.db.models import Q
+
 
 def home(request):
     movies = Movie.objects.all()
+    query = request.GET.get('q')
+    if query:
+        movies = movies.filter(
+            Q(title__icontains=query) |
+            Q(genre__genre__icontains=query) |
+            Q(actors__name__icontains=query) |
+            Q(country__country__icontains=query) |
+            Q(language__language__icontains=query)
+        ).distinct()
     return render(request, 'home.html', {'movies': movies})
 
 def movie_detail(request, pk):

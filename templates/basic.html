@@ -16,6 +16,12 @@
       </svg>
       <span class="ml-3 text-xl">Movie</span>
     </a>
+
+    <form method="get" class="mx-auto flex items-center gap-2">
+      <input type="text" name="q" placeholder="Search" class="bg-gray-800 py-1 px-3 hover:bg-gray-700 rounded text-base hover:text-white">
+      <button class="bg-gray-800 py-1 px-3 hover:bg-gray-700 rounded text-base hover:text-white" type="submit">Search</button>
+    </form>
+
     <nav class="ml-auto flex items-center gap-3">
       {% if user.is_authenticated %}
         <span class="text-gray-400">{{ user.username }}</span>
